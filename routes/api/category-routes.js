@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 // finds one category by its `id` valu
 router.get('/:id', async (req, res) => {
   try {
-    const categoryData = await Category.findByPk({
+    const categoryData = await Category.findByPk(req.params.id,{
       include: [{all: true}],
     });
     res.status(200).json(categoryData);
